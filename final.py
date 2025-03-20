@@ -79,7 +79,7 @@ def grant_cloud_access():
 
     # Grant access to the folder (remove restrictions)
     os.system(f'icacls "{secure_folder}" /grant Everyone:(OI)(CI)F')
-    print("🔓 SecureFolder is now unlocked!")
+    print("SecureFolder is now unlocked!")
 
     # Open the folder
     os.startfile(secure_folder)
@@ -93,7 +93,7 @@ def grant_cloud_access():
 
 # Main Function
 if __name__ == "__main__":
-    print("🔌 Checking USB device...")
+    print("Checking USB device...")
 
     if is_usb_connected():
         print("USB detected! Proceeding with authentication...")
