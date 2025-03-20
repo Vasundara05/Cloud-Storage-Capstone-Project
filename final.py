@@ -54,7 +54,7 @@ def authenticate_face():
                 hist2 = cv2.normalize(hist2, hist2).flatten()
 
                 similarity = cv2.compareHist(hist1, hist2, cv2.HISTCMP_CORREL)
-                print(f"🔍 Match Score: {similarity:.2f}")
+                print(f"Match Score: {similarity:.2f}")
 
                 cap.release()
                 cv2.destroyAllWindows()
