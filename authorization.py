@@ -37,11 +37,11 @@ while True:
             face = gray[y:y + h, x:x + w]  # Extract the expanded face region
             face = cv2.resize(face, (400, 400))  # Save at a larger size
             cv2.imwrite(save_path, face)  # Save the image
-            print(f"✅ Face saved at: {save_path}")
+            print(f"Face saved at: {save_path}")
             break  # Exit after capturing
 
         else:
-            print("❌ No face detected. Try again.")
+            print("No face detected. Try again.")
 
     elif key == ord("q"):  # Press 'Q' to exit
         break
