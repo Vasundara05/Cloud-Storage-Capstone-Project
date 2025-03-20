@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import os
 import time
-import psutil  # For detecting USB without pyusb
+import psutil  
 
 # Load Haar cascade for face detection
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
@@ -12,7 +12,7 @@ authorized_face_path = r"C:\Users\derpt\OneDrive\Desktop\Varsha\CSA31\authorized
 authorized_face = cv2.imread(authorized_face_path, cv2.IMREAD_GRAYSCALE)
 
 if authorized_face is None:
-    print("❌ No authorized face found! Run the capture script first.")
+    print("No authorized face found! Run the capture script first.")
     exit()
 
 # Function to check if a USB device is connected
@@ -60,10 +60,10 @@ def authenticate_face():
                 cv2.destroyAllWindows()
 
                 if similarity > 0.80:  
-                    print("✅ Face recognized! Access granted.")
+                    print("Face recognized! Access granted.")
                     return True
                 else:
-                    print("❌ Face not recognized! Access denied.")
+                    print("Face not recognized! Access denied.")
                     return False
 
         elif key == ord("q"):
@@ -86,20 +86,20 @@ def grant_cloud_access():
     time.sleep(5)
 
     # Re-lock the folder after 30 seconds
-    print("🔒 Locking SecureFolder after 30 seconds...")
+    print("Locking SecureFolder after 30 seconds...")
     time.sleep(30)
     os.system(f'icacls "{secure_folder}" /deny Everyone:(OI)(CI)F')
-    print("✅ SecureFolder is locked again.")
+    print("SecureFolder is locked again.")
 
 # Main Function
 if __name__ == "__main__":
     print("🔌 Checking USB device...")
 
     if is_usb_connected():
-        print("✅ USB detected! Proceeding with authentication...")
+        print("USB detected! Proceeding with authentication...")
         if authenticate_face():
             grant_cloud_access()
         else:
-            print("❌ Access denied. USB storage remains locked.")
+            print("Access denied. USB storage remains locked.")
     else:
-        print("❌ No USB device detected! Insert a USB drive to continue.")
+        print("No USB device detected! Insert a USB drive to continue.")
